@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Account from "./pages/Account/Accounts";
+import NotFound from "./pages/NotFound";
 
 // 컴포넌트
 import Write from "./components/Content/Write";
@@ -20,14 +21,16 @@ export default function App() {
 
   return (
     <div>
-      <Header />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Write/>}/>
-            <Route path="/Account" element={<Account/>}/>
-          </Routes>
-          </BrowserRouter>  
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Write/>}/>
+          <Route path="/Account" element={<Account/>}/>
+          
+          <Route path="/*" element={<NotFound />} /> 
+        </Routes>
+        <Footer />
+      </BrowserRouter>  
     </div>
   )
 };

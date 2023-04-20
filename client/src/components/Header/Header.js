@@ -4,20 +4,26 @@ import './Header.scss';
 
 const Header = () => {
 
-    const ClickHandler = () => {
-        console.log('클릭')
+    const navigate = useNavigate();
+ 
+    const leftClickHandler = () => {
+        navigate("/");
     }
+
+    const rightClickHandler = () => {
+        navigate("/Account");
+    };
 
     return(
         <div className='header-entire'>
             <div className='header-content'>
                 <div className='content-left'>
-                    <button className="left-elements">
+                    <button className="left-elements" onClick={leftClickHandler}>
                         <span>무료</span>
                         <span style={{ fontSize: 2.4 + 'rem' }}>메모장</span>
                     </button>
                 </div>
-                <button className="content-right" onClick={ClickHandler}>회원가입 / 로그인</button>
+                <button className="content-right" onClick={rightClickHandler}>회원가입 / 로그인</button>
             </div>
         </div>
     )
