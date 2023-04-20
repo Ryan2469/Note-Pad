@@ -1,0 +1,163 @@
+.login-entire {
+    padding-top: 65px;
+
+    .login-entire-element {
+        padding: 2rem 4rem;
+
+        .login-element {
+            padding: 0.1rem 4rem;
+            
+            input::placeholder {
+                color: #ffd89b;
+            }
+        
+            .span-email {
+                color: #9bce98;
+                margin-left: 1rem;
+                font-weight: 'bold'
+            }
+        
+            .email-input {
+                height: 1.5rem;
+                padding-left: 0.5rem;
+                color: #ffc468;
+                font-size: 1.1rem;
+                margin-left: 2rem;
+                border: 1px solid #ffc468;
+                border-radius: 0.4rem;
+                outline: none
+            }
+        
+            .email-input:focus {
+                border-color: #FBB13E;
+                box-shadow: 0 0 0.2rem 0.01rem #FBB13E;
+                border-radius: 0.3rem;
+                transition: all 0.3s ease-in-out;
+                }  
+        
+            .span-pw {
+                color: #9bce98;
+                font-weight: 'bold'
+            }
+        
+            .pw-input {
+                height: 1.5rem;
+                padding-left: 0.5rem;
+                color: #ffc468;
+                font-size: 1.1rem;
+                margin-left: 2rem;
+                border: 1px solid #ffc468;
+                border-radius: 0.4rem;
+                outline: none
+            }
+            
+            .pw-input:focus {
+                border-color: #FBB13E;
+                box-shadow: 0 0 0.2rem 0.01rem #FBB13E;
+                border-radius: 0.3rem;
+                transition: all 0.3s ease-in-out;
+                }  
+        
+            
+            .login-element-foot {
+                padding: 1rem 6rem;
+
+                .login-but {
+                    font-size: 1rem;
+                    color: white;
+                    background-color: #9bce98;
+                    border: none;
+                    border-radius: 0.3rem;
+                    width: 5rem;
+                    height: 2.5rem;
+                    margin-top: 1rem;
+                    cursor: pointer;
+                }
+            
+                input[type="checkbox"] {
+                    cursor: pointer;
+                    appearance: none;
+                    outline: 9;
+                    height: 18px;
+                    width: 18px;
+                    border: 1px solid #efb250;
+                    vertical-align: -5px;
+                }
+    
+                input[type="checkbox"]:checked {
+                    background: #efb250;
+                }
+                
+                input[type="checkbox"]:hover {
+                    filter: brightness(90%);
+                }
+                
+                input[type="checkbox"]:after {
+                    content: '';
+                    position: relative;
+                    left: 40%;
+                    top: 20%;
+                    width: 15%;
+                    height: 40%;
+                    border: solid #fff;
+                    border-width: 0 2px 2px 0;
+                    transform: rotate(45deg);
+                    display: none;
+                }
+                
+                input[type="checkbox"]:checked:after {
+                    display: block;
+                }
+                
+                input[type="checkbox"]:disabled:after {
+                    border-color: #efb250;
+                }
+            }
+                
+        }
+    }
+
+}
+
+// 모바일 버전1
+@media screen and (min-width: 399px) and (max-width: 589px) {
+
+    .login-entire { 
+
+        .login-entire-element {
+            padding: 2rem 1rem;
+    
+            .login-element {
+                padding: 0.1rem 1rem;
+            }
+        }
+    }
+}
+
+// 모바일 버전2
+@media screen and (max-width: 398px) {
+
+    .login-entire { 
+
+        .login-entire-element {
+            padding: 1rem;
+    
+            .login-element {
+                padding: 0.1rem 1rem;
+                
+                .email-input {
+                    width: 11rem;
+                }
+
+                .pw-input {
+                    width: 11rem;
+                }
+
+                .login-element-foot {
+                    padding: 1rem 1rem;
+                }
+            }
+        }
+    }
+    
+}
