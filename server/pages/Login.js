@@ -29,7 +29,6 @@ app.get('/api/jwtkey', (req, res) => {
                 console.log(err);
                 return res.sendStatus(401);
             }
-
             res.send(decoded);
         })
     }
