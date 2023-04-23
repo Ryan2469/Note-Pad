@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Stylish&display=swap');
 
 .write-content {
-    display: flex;
-    justify-content: center;
-    padding-top: 5rem;
- 
-     .write-inner-content {
-         display: grid;
-         gap: 10px;
-         width: 65%;
+  display: flex;
+  justify-content: center;
+  padding-top: 65px;
 
+   .write-inner-content {
+       display: grid;
+       gap: 10px;
+       width: 65%;
+         
         .write-input {
           border: 0.1rem solid #ffce00;
           font-size: 1.2rem;

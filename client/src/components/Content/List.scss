@@ -3,12 +3,22 @@
 .list-element {
     width: 100%;
     display: grid;
-    gap: 0.5rem;
     word-break:break-all;
+    overflow: auto;
+    gap: 0.5rem;
+    height: 39rem;
 
     div {
         font-family: 'Black Han Sans', sans-serif; 
         font-family: 'Stylish', sans-serif;
     }
 
+}
+
+
+// 모바일 버전2
+@media screen and (max-width: 424px) {
+    .list-element {
+        height: 10rem;
+    }
 }
