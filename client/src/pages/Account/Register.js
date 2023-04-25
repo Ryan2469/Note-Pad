@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import ErrorModal from '../../components/common/ErrorModal';
+
 import './Register.scss'
 
 const Register = () => {
 
     const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
+    const [error, setError] = useState();
 
     const submitHandler = async (event) => {
         event.preventDefault();
+
+        if (email.trim().length === 0 || pwd.trim().length === 0) {
+            setError({
+                title: '에러 메시지',
+                message: '이메일과 비밀번호를 정확히 입력해주세요',
+            });
+            return;
+          }
 
         try {
             const respone = await axios.post('http://localhost:3000/api/register', 
@@ -19,8 +30,19 @@ const Register = () => {
         }
     }
 
+    const errorHandler = () => {
+        setError(null);
+      };
+
     return (
         <div style={{backgroundColor: '#fffffcee'}}>
+            {error && (
+            <ErrorModal
+              title={error.title}
+              message={error.message}
+              onConfirm={errorHandler}
+            />
+            )}
             <div className='register-entire'>
                 <form className='register-entire-element' onSubmit={submitHandler}>
                     <h1 style={{color: '#9bce98'}}>회원가입</h1>

@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 // 컴포넌트
 import Write from "./components/Content/Write";
 
+import ErrorModal from "./components/common/ErrorModal";
 
 
 import './App.css';
@@ -26,6 +27,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Write/>}/>
           <Route path="/Account" element={<Account/>}/>
+          <Route path="/modal" element={<ErrorModal />} />
           
           <Route path="/*" element={<NotFound />} /> 
         </Routes>

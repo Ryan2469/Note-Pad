@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import ErrorModal from '../../components/common/ErrorModal';
+
 import './Login.scss'
 
 
@@ -7,13 +9,19 @@ const Login = () => {
     
     const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
+    const [error, setError] = useState();
 
     const submitHandler = async (event) => {
         event.preventDefault();
-        console.log(email, pwd); 
-        if(email === !email){
-            console.log("땡");
-        }
+        console.log(error); 
+
+        if (email.trim().length === 0 || pwd.trim().length === 0) {
+            setError({
+                title: '에러 메시지',
+                message: '이메일과 비밀번호를 정확히 입력해주세요',
+            });
+            return;
+          }
       
         try {
             const respone = await axios.post ('http://localhost:3000/api/login',
@@ -24,8 +32,19 @@ const Login = () => {
         }
     };
 
+    const errorHandler = () => {
+        setError(null);
+      };
+
     return (
         <div style={{backgroundColor: '#fffffcee'}}>
+            {error && (
+            <ErrorModal
+              title={error.title}
+              message={error.message}
+              onConfirm={errorHandler}
+            />
+            )}
             <div className='login-entire'>
                 <form className='login-entire-element' onSubmit={submitHandler}>
                     <h1 style={{color: '#9bce98'}}>로그인</h1>
