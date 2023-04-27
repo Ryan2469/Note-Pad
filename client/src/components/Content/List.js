@@ -3,42 +3,24 @@ import './List.scss'
 
 const List = (props) => {
 
+    const Data = JSON.parse(localStorage.getItem("Data"));
+
+    let content;
+
+    if(Data === 0 || Data === undefined || Data === null) {
+        content = (
+            <div></div>
+        )
+    } else {
+        content = (
+            Data.map((items)=> <div key={items.id}>{items.title}</div>)
+        )
+    }
+
+
     return(
         <div className='list-element'>
-            <div>{props.items[0].title}</div>
-            <div>{props.items[1].title}</div>
-            <div>{props.items[2].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            <div>{props.items[3].title}</div>
-            
+           {content}
         </div>
     )
 }

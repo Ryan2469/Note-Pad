@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , Fragment } from 'react';
 import axios from 'axios';
 import ErrorModal from '../../components/common/ErrorModal';
 
@@ -53,12 +53,12 @@ const Register = () => {
                                 onChange={(event) => setEmail(event.target.value)}
                             />
                         </div>
-                        <div>
+                        <Fragment>
                             <span className="span-pw"><b>패스워드</b></span>
                             <input className='pw-input' type="password" placeholder="비밀번호 입력" 
                                 onChange={(event) => setPwd(event.target.value)} 
                             />
-                        </div>   
+                        </Fragment>   
                         <div>
                             <div className='login-element-foot'>
                                 <button className='login-but' type="submit">회원가입</button>

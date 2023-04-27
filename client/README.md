@@ -70,3 +70,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
+## 기능구현
+
+23년 - 4월 - 27일
+------
+비회원 사용자가 메모장을 작성하면 데이터를 로컬스토리지에 저장시킨 뒤 List 컴포넌트에 저장된 데이터를 보여주는 기능 구현 중
+-사용자가 데이터 작성하면 로컬스토리지에 저장 됨<br/><br/>
+
+비회원 사용자가 리스트에 저장되어 있는 데이터 클릭 시 저장된 데이터 보여주기

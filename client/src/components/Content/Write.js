@@ -1,86 +1,73 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import List from './List';
 import './Write.scss';
 
-const Write = (props) => {
+const objectData = [
+    {
+        id: 1,
+        title: '메모장 1',
+        text: '무엇을 입력하면 좋을까?'
+    },
+    {
+        id: 2,
+        title: '메모장 2',
+        text: '무엇을 입력하면 좋을까?'
+    },
+    {
+        id: 3,
+        title: '메모장 3ㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㅁㄴㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㅁㄴㅇㅇㅁㄴㅇㅁㄴㅇㄴㅁㅇㄴㅁㅇㅁㄴㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㅁㅇㅁㄴㅇㅁㄴㅇㄴㅁ',
+        text: '무엇을 입력하면 좋을까?'
+    },
+    {
+        id: 4,
+        title: '메모장 4',
+        text: '무엇을 입력하면 좋을까?'
+    },
+];
 
-    const objectData = [
-        {
-            idx: 1,
-            title: '메모장 1',
-            text: '무엇을 입력하면 좋을까?'
-        },
-        {
-            idx: 2,
-            title: '메모장 2',
-            text: '무엇을 입력하면 좋을까?'
-        },
-        {
-            idx: 3,
-            title: '메모장 3ㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㅁㄴㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㅁㄴㅇㅇㅁㄴㅇㅁㄴㅇㄴㅁㅇㄴㅁㅇㅁㄴㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㅁㅇㅁㄴㅇㅁㄴㅇㄴㅁ',
-            text: '무엇을 입력하면 좋을까?'
-        },
-        {
-            idx: 4,
-            title: '메모장 4',
-            text: '무엇을 입력하면 좋을까?'
-        },
-    ];
+const Write = () => {
 
-    const [enterTitle, setEnterTitel] = useState('');
-    const [enterText, setEnterText] = useState('');
+    const addTitle = useRef();
+    const addText = useRef();
 
-    const titleChangeHandler = (event) => {
-        setEnterTitel(event.target.value);
-    }
-
-    const textChangeHandler = (event) => {
-        setEnterText(event.target.value);
-    }
+    const [locStrData, setLocStrData] = useState([]);
 
     const submitHandler = (event) => {
         event.preventDefault();
 
-        if(enterTitle == "" || enterText == "" ) {
-            alert("제목과 내용을 전부 작성해 주세요.")
-            return
-        }
+       const enteredAddTitle = addTitle.current.value;
+       const enteredAddText = addText.current.value; 
 
-        const writeData = {
-            title: enterTitle,
-            text: enterText
-        }
-
-        console.log(writeData);
-
-         /**
-             *  ReastFull API post-board
-             *  게시판 글 작성하기
-             */
-
-        // const writing = async () => {
-        //     const response = axios.post("/api/board", {
-        //         note_title: writeData.title,
-        //         note_text: writeData.text,
-        //     }
-        //     .then((response)=>{
-        //         console.log(response);
-        //         // router.push({ path : '/boardList'})
-        //     }).catch((error)=>{
-        //         console.log(error);
-        //         alert(error);
-        //     })
-
-        //     );
+        // if(enteredAddTitle.trim().length === 0 || enteredAddText.trim().length === 0) {
+        //     alert("제목과 내용을 전부 작성해 주세요.")
+        //     return
         // }
+        
+        const writeData = {
+            key: 0,
+            id: Date.now(),
+            title: enteredAddTitle,
+            text: enteredAddText,
+        }
 
-        props.onSubmitChange(writeData);
+    
+        /**
+         * 비회원 사용자 데이터 - 로컬스토리지 저장
+        */
 
-        setEnterTitel('');
-        setEnterText('');
+       //로컬 스토리지에 사용자가 입력한 데이터 저장
+       const storageItems = JSON.parse(localStorage.getItem("Data")) || [];
+
+       const newStorage = [...storageItems, writeData];
+       //저장한 데이터 불러오자
+       localStorage.setItem("Data", JSON.stringify(newStorage));
+
+       setLocStrData(newStorage);
+
+        // addTitle.current.value = '';
+        addText.current.value = '';
     }
-
 
     return (
         <form style={{backgroundColor: '#fffffcee'}} onSubmit={submitHandler}>
@@ -88,22 +75,20 @@ const Write = (props) => {
                 <div className="write-inner-content">
                     <input 
                         className="write-input" 
-                        onChange={titleChangeHandler}
-                        value={enterTitle}
+                        ref={addTitle}
                         type="text" 
                         placeholder="제목을 입력해주세요."
                     />
                     
                     <textarea 
                         className="write-textarea"
-                        onChange={textChangeHandler}
-                        value={enterText}
+                        ref={addText}
                         type="text"
                         placeholder="내용을 입력해주세요." 
                     ></textarea>
                 </div>
                 <div className='write-side-list'>
-                    <List items={objectData}/>
+                    <List items={locStrData}/>
                 </div>
             </div>
             <div className="write-utils">
@@ -115,11 +100,11 @@ const Write = (props) => {
                         multiple
                     />
                 </div>
-                <div>
+                <React.Fragment>
                     <button className="write-but" type='submit'>
                         저장하기
                     </button>
-                </div>
+                </React.Fragment>
             </div>
         </form>
     );

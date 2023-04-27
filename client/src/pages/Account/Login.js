@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment, useRef } from 'react';
 import axios from 'axios';
 import ErrorModal from '../../components/common/ErrorModal';
 
@@ -23,10 +23,8 @@ const Login = () => {
             return;
           }
       
-        try {
-            const respone = await axios.post ('http://localhost:3000/api/login',
-            {email, pwd})
-            console.log(respone.data);
+        try { 
+
         } catch (error) {
             console.log(error)
         }
@@ -55,13 +53,13 @@ const Login = () => {
                                 onChange={(event) => setEmail(event.target.value)}
                             />
                         </div>
-                        <div>
+                        <Fragment>
                             <span className="span-pw"><b>패스워드</b></span>
                             <input className='pw-input' type="password" placeholder="비밀번호 입력" 
                                 onChange={(event) => setPwd(event.target.value)} 
                             />
-                        </div>   
-                        <div>
+                        </Fragment>   
+                        <Fragment>
                             <div className='login-element-foot'>
                                 <div className="login-state">
                                     <input type="checkbox" value="" />
@@ -69,7 +67,7 @@ const Login = () => {
                                 </div>
                                 <button className='login-but' type="submit">로그인</button>
                             </div>   
-                        </div>                
+                        </Fragment>                
                     </div>
                 </form>
             </div>
