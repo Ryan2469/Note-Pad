@@ -9,7 +9,7 @@ const List = (props) => {
 
     if(Data === 0 || Data === undefined || Data === null) {
         content = (
-            <div></div>
+            <React.Fragment></React.Fragment>
         )
     } else {
         content = (

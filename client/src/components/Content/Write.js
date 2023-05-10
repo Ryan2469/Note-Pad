@@ -3,29 +3,6 @@ import axios from 'axios';
 import List from './List';
 import './Write.scss';
 
-const objectData = [
-    {
-        id: 1,
-        title: '메모장 1',
-        text: '무엇을 입력하면 좋을까?'
-    },
-    {
-        id: 2,
-        title: '메모장 2',
-        text: '무엇을 입력하면 좋을까?'
-    },
-    {
-        id: 3,
-        title: '메모장 3ㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㅁㄴㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㅁㄴㅇㅇㅁㄴㅇㅁㄴㅇㄴㅁㅇㄴㅁㅇㅁㄴㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㅁㅇㅁㄴㅇㅁㄴㅇㄴㅁ',
-        text: '무엇을 입력하면 좋을까?'
-    },
-    {
-        id: 4,
-        title: '메모장 4',
-        text: '무엇을 입력하면 좋을까?'
-    },
-];
-
 const Write = () => {
 
     const addTitle = useRef();
@@ -36,13 +13,14 @@ const Write = () => {
     const submitHandler = (event) => {
         event.preventDefault();
 
-       const enteredAddTitle = addTitle.current.value;
-       const enteredAddText = addText.current.value; 
+        const enteredAddTitle = addTitle.current.value;
+        const enteredAddText = addText.current.value; 
 
-        // if(enteredAddTitle.trim().length === 0 || enteredAddText.trim().length === 0) {
-        //     alert("제목과 내용을 전부 작성해 주세요.")
-        //     return
-        // }
+        
+        if(enteredAddTitle.trim().length === 0 || enteredAddText.trim().length === 0) {
+            alert("제목과 내용을 전부 작성해 주세요.")
+            return
+        }
         
         const writeData = {
             key: 0,
@@ -59,13 +37,13 @@ const Write = () => {
        //로컬 스토리지에 사용자가 입력한 데이터 저장
        const storageItems = JSON.parse(localStorage.getItem("Data")) || [];
 
-       const newStorage = [...storageItems, writeData];
+       const prevStorage = [...storageItems, writeData];
        //저장한 데이터 불러오자
-       localStorage.setItem("Data", JSON.stringify(newStorage));
+       localStorage.setItem("Data", JSON.stringify(prevStorage));
 
-       setLocStrData(newStorage);
+       setLocStrData(prevStorage);
 
-        // addTitle.current.value = '';
+        addTitle.current.value = '';
         addText.current.value = '';
     }
 
