@@ -11,7 +11,7 @@ import NotFound from "./pages/NotFound";
 import Write from "./components/Content/Write";
 import List from './components/Content/List';
 import ErrorModal from "./components/common/ErrorModal";
-
+import Preview from './components/Content/Preview';
 
 import './App.css';
 
@@ -41,7 +41,8 @@ export default function App() {
           <Route path="/" element={<Write />}/>
           <Route path="/Account" element={<Account/>}/>
           <Route path="/modal" element={<ErrorModal />} />
-          
+          <Route path="/Preview/:id" element={<Preview/>} />
+
           <Route path="/*" element={<NotFound />} /> 
           
         </Routes>

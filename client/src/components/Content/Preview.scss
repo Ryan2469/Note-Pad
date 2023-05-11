@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Stylish&display=swap');
+
+.preview-content {
+  display: flex;
+  justify-content: center;
+  padding-top: 65px;
+
+   .preview-inner-content {
+       display: grid;
+       gap: 10px;
+       width: 65%;
+         
+        .preview-input {
+          border: 0.1rem solid #ffce00;
+          font-size: 1.2rem;
+          padding-left: 0.8rem;
+          border-radius: 0.3rem;
+          height:3rem;
+          resize: none;
+          outline: none;
+          font-family: 'Black Han Sans', sans-serif; 
+          font-family: 'Stylish', sans-serif;
+        }
+
+        .preview-input:focus {
+          border-color: #ffb600;
+          box-shadow: 0 0 0.2rem 0.01rem #ffb600;
+          border-radius: 0.3rem;
+          transition: all 0.3s ease-in-out;
+        }  
+
+        .preview-textarea {
+          border: 0.1rem solid #ffce00;
+          font-size: 1.1rem;
+          border-radius: 0.3rem;
+          height:35rem;
+          padding: 0.6rem;
+          resize: none;
+          outline: none;
+          font-family: 'Black Han Sans', sans-serif; 
+          font-family: 'Stylish', sans-serif;
+        }
+
+        .preview-textarea:focus {
+          border:0.1rem solid #ffb600;
+          box-shadow: 0 0 0.2rem 0.01rem #ffb600;
+          border-radius: 0.3rem;
+          transition: all 0.3s ease-in-out;
+        } 
+    }
+    // List 컴포넌트 
+    .preview-side-list {
+        width: 15%;
+        margin-left: 0.5rem;
+        background-color: white;
+        border: 0.1rem solid #ffce00;
+        border-radius: 0.3rem;
+        padding: 0.4rem
+    }
+ }
+ 
+ .preview-utils {
+    text-align: right;
+    margin: 1rem 2rem;
+
+    .preview-but {
+          margin-top: 1rem;
+          width: 13%;
+          height: 2rem;
+          font-size: 1.4rem;
+          line-height: 1.9rem;
+          background-color: #005fcc;
+          color: white;
+          font-family: 'Black Han Sans', sans-serif; 
+          
+          a {
+            color: white;
+            text-decoration: none;
+          }
+    }
+}
+
+
+// 버튼
+@media screen and (min-width: 664px) and (max-width: 769px) {
+  .preview-utils {
+      .preview-but {
+            width: 17%;
+      }
+  }
+}
+
+// 모바일 버전1
+@media screen and (min-width: 425px) and (max-width: 663px) {
+
+  .preview-utils {
+      .preview-but {
+        width: 40%;
+      } 
+  }
+
+}
+
+// 모바일 버전2
+@media screen and (max-width: 424px) {
+  .preview-content {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+
+      .preview-inner-content {
+          display: grid;
+          gap: 10px;
+          width: 100%;
+    }
+    // List 컴포넌트 
+    .preview-side-list {
+        width: auto;
+        margin-left: 0;
+        margin-top: 1rem;
+        border: 0.1rem solid #ffce00;
+        border-radius: 0.3rem;
+        padding: 0.4rem;
+    }
+  }
+  
+  .preview-utils {
+    text-align: right;
+    margin: 1rem 2rem;
+
+    .preview-but {
+          width: 100%;
+    }
+  }
+}
